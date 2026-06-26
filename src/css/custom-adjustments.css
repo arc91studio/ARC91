@@ -1,0 +1,634 @@
+/* --------------------------------------------------- *
+ *  Stodio Custom Adjustments & Interactivity Styles
+ * --------------------------------------------------- */
+
+/* --- Infinite Marquee (Logos & Gallery) --- */
+.logo-container,
+.gallery-list-container {
+  display: flex !important;
+  overflow: hidden !important;
+  user-select: none;
+  width: 100%;
+}
+
+.logos-row,
+.gallery-image-list {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  min-width: 100%;
+  flex-shrink: 0;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.logos-row {
+  animation-duration: 25s;
+  /* Speed up logos slightly */
+}
+
+/* Fast marquee reverse direction or customized */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Pause scroll animation on hover to allow inspection */
+.logo-container:hover .logos-row,
+.gallery-list-container:hover .gallery-image-list {
+  animation-play-state: paused;
+}
+
+/* --- FAQ Accordion Transition --- */
+.faq-wrap {
+  cursor: pointer;
+}
+
+.faq-answer {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.3s ease;
+}
+
+/* Accordion Open State Plus Icon Rotation */
+.faq-wrap .faq-plus {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.faq-wrap.is-open .faq-plus {
+  transform: rotate(90deg);
+}
+
+.faq-wrap.is-open .faq-plus-l {
+  transform: rotate(90deg);
+}
+
+/* --- Webflow Tabs (Pricing Toggle) --- */
+.w-tab-pane {
+  display: none !important;
+}
+
+.w-tab-pane.w--tab-active {
+  display: block !important;
+}
+
+/* Smooth Tab Transitions */
+.tabs-content {
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Navbar Dropdown Support --- */
+.w-dropdown-list {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.w-dropdown-list.w--open {
+  display: flex !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Make dropdown toggle transition rotation */
+.nav-dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown.w--open .nav-dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* --- Mobile Navigation and Hamburger --- */
+.w-nav-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hamburger animations */
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14px;
+  width: 20px;
+}
+
+.hamburger div {
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger state changes */
+.hamburger.w--open .top-bar {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.w--open .middle-bar {
+  opacity: 0;
+}
+
+.hamburger.w--open .bottom-bar {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Disable body scrolling when mobile menu is active */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* --- Lenis Smooth Scrolling Config --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Slider transition styles */
+.w-slider-mask {
+  display: flex !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.w-slider-mask::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.w-slider-mask {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.w-slide {
+  flex: 0 0 100% !important;
+  scroll-snap-align: start !important;
+}
+
+/* Custom navigation styling overrides if needed */
+.w-slider-arrow-left,
+.w-slider-arrow-right {
+  cursor: pointer;
+  user-select: none;
+}
+
+
+/* Hide Webflow Branding Badge */
+.w-webflow-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Black Navbar Overrides for Light Pages */
+.navbar-black-text .nav-link {
+  color: #0a0a0a !important;
+}
+
+.navbar-black-text .nav-link:hover {
+  color: #de322d !important;
+}
+
+.navbar-black-text .nav-link.w--current {
+  color: #de322d !important;
+}
+
+.navbar-black-text .nav-dropdown-toggle {
+  color: #0a0a0a !important;
+}
+
+.navbar-black-text .nav-dropdown-toggle:hover {
+  color: #de322d !important;
+}
+
+.navbar-black-text .nav-dropdown-icon {
+  display: none !important;
+}
+
+.navbar-black-text .nav-dropdown-icon.black {
+  display: block !important;
+}
+
+.navbar-black-text .nav-dropdown-link {
+  color: #0a0a0a !important;
+}
+
+.navbar-black-text .nav-dropdown-link:hover {
+  color: #de322d !important;
+}
+
+.navbar-black-text .hamburger div {
+  background-color: #0a0a0a !important;
+}
+
+/* Ensure the Nav Button maintains its size and shape across all pages */
+.button.nav {
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  min-height: 48px !important;
+  border-radius: 100vw !important;
+}
+
+/* --- Webflow Tabs (Pricing Toggle) --- */
+.w-tab-pane {
+  display: none !important;
+}
+
+.w-tab-pane.w--tab-active {
+  display: block !important;
+}
+
+/* Smooth Tab Transitions */
+.tabs-content {
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Navbar Dropdown Support --- */
+.w-dropdown-list {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.w-dropdown-list.w--open {
+  display: flex !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Make dropdown toggle transition rotation */
+.nav-dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown.w--open .nav-dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* --- Mobile Navigation and Hamburger --- */
+.w-nav-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hamburger animations */
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14px;
+  width: 20px;
+}
+
+.hamburger div {
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger state changes */
+.hamburger.w--open .top-bar {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.w--open .middle-bar {
+  opacity: 0;
+}
+
+.hamburger.w--open .bottom-bar {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Disable body scrolling when mobile menu is active */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* --- Lenis Smooth Scrolling Config --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Slider transition styles */
+.w-slider-mask {
+  display: flex !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.w-slider-mask::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.w-slider-mask {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.w-slide {
+  flex: 0 0 100% !important;
+  scroll-snap-align: start !important;
+}
+
+/* Custom navigation styling overrides if needed */
+.w-slider-arrow-left,
+.w-slider-arrow-right {
+  cursor: pointer;
+  user-select: none;
+}
+
+
+/* Hide Webflow Branding Badge */
+.w-webflow-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Black Navbar Overrides for Light Pages */
+.navbar-black-text .nav-link {
+  color: #0a0a0a !important;
+}
+
+.navbar-black-text .nav-link:hover {
+  color: #de322d !important;
+}
+
+.navbar-black-text .nav-link.w--current {
+  color: #de322d !important;
+}
+
+.navbar-black-text .nav-dropdown-toggle {
+  color: #0a0a0a !important;
+}
+
+.navbar-black-text .nav-dropdown-toggle:hover {
+  color: #de322d !important;
+}
+
+.navbar-black-text .nav-dropdown-icon {
+  display: none !important;
+}
+
+.navbar-black-text .nav-dropdown-icon.black {
+  display: block !important;
+}
+
+.navbar-black-text .nav-dropdown-link {
+  color: #0a0a0a !important;
+}
+
+.navbar-black-text .nav-dropdown-link:hover {
+  color: #de322d !important;
+}
+
+.navbar-black-text .hamburger div {
+  background-color: #0a0a0a !important;
+}
+
+/* Ensure the Nav Button maintains its size and shape across all pages */
+.button.nav {
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  min-height: 48px !important;
+  border-radius: 100vw !important;
+}
+
+.button-text-wrapper,
+.button-text {
+  white-space: nowrap !important;
+}
+
+.button-content-block {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.nav-button-wrapper {
+  margin-left: 140px !important;
+}
+
+/* --- Stodio Hero Layout --- */
+body.home-page {
+  background-color: #ffffff;
+}
+
+/* The hero section becomes a rounded card */
+.home-page .hero-section {
+  margin: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  height: calc(100vh - 32px);
+  display: flex;
+  align-items: flex-end;
+  /* Align content to bottom */
+}
+
+/* Ensure background image covers the rounded card */
+.home-page .hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.home-page .hero-main-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Push content to bottom */
+  padding-bottom: 40px;
+}
+
+/* Center the text elements like the screenshot */
+.home-page .hero-content-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Positioning header inside the margin */
+.home-page .header-block {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  width: calc(100% - 32px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: transparent;
+  border-radius: 24px 24px 0 0;
+}
+
+/* Glass-morphism active state */
+.home-page .header-block.glass-active {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 0;
+}
+
+.home-page .hero-content-wrapper.home {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  max-width: 400px;
+}
+
+/* Project Name Truncation */
+.projects-card-info,
+.project-name-wrapper {
+  min-width: 0 !important;
+  width: 100%;
+}
+
+.projects-name {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+  max-width: 100% !important;
+}
+
+/* --- Portfolio Grid Styles --- */
+.portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.portfolio-hero-img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 24px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-hero-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.portfolio-img-small {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 24px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-img-small:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-img-large {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 24px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-img-large:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-img-wrapper {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+/* Black 'Book A Intro' button for all pages except the Home Page */
+.button.nav.dark-nav-btn {
+  background-color: #000000 !important;
+}
+
+.button.nav.dark-nav-btn .button-text {
+  color: #ffffff !important;
+}
+
+.button.nav.dark-nav-btn .button-icon {
+  filter: brightness(0) invert(1) !important;
+}
